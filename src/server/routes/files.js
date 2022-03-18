@@ -69,9 +69,10 @@ async function files(req, res) {
             : newpath = `${__dirname}/../uploads/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${fileName}.${fileExt}`;
         let returnedFileName;
         if (!fileExt.includes('png') && !fileExt.includes('jpg') && !fileExt.includes('jpeg') && !fileExt.includes('md') && !fields.pupload) {
+            this.log.warning('boop');
             returnedFileName = `${fileName}.${fileExt}`;
         } else {
-            returnedFileName = fileName;
+            returnedFileName = `${fileName}.${fileExt}`;
         }
         if(fields.showCase) {
             fields.showCase = true
@@ -146,7 +147,7 @@ async function files(req, res) {
             });
             if (this.monitorChannel !== null) this.bot.createMessage(this.monitorChannel, `\`\`\`MARKDOWN\n[NEW UPLOAD][USER]\n[SIZE](${Math.round(files.fdata.size / 1024)}KB)\n[TYPE](${files.fdata.type})\n[KEY](${authKey})\n[IP](${userIP})\n\`\`\`\n${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName}`);
             if (err) return res.write(err);
-            this.log.verbose(`New File Upload: ${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName} | IP: ${userIP} | KEY: ${authKey}`);
+            this.log.verbose(`New File Uploadss: ${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName} | IP: ${userIP}`);
             if (usingUploader === true) {
                 res.redirect(`/?success=${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName}`);
                 return res.end();
@@ -205,7 +206,7 @@ async function files(req, res) {
                 });
                 if (this.monitorChannel !== null) this.bot.createMessage(this.monitorChannel, `\`\`\`MARKDOWN\n[NEW UPLOAD][USER]\n[SIZE](${Math.round(files.fdata.size / 1024)}KB)\n[TYPE](${files.fdata.type})\n[KEY](${authKey})\n[IP](${userIP})\n\`\`\`\n${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${showCaseFile}`);
                 if (err) return res.write(err);
-                this.log.verbose(`New File Upload: ${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${showCaseFile} | IP: ${userIP} | KEY ${authKey}`);
+                this.log.verbose(`New File Uploadssss: ${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${showCaseFile} | IP: ${userIP}`);
                 if (usingUploader === true) {
                     res.redirect(`/?success=${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${showCaseFile}`);
                     return res.end();
@@ -234,7 +235,7 @@ async function files(req, res) {
             }
             if (this.monitorChannel !== null) this.bot.createMessage(this.monitorChannel, `\`\`\`MARKDOWN\n[NEW UPLOAD][USER]\n[SIZE](${Math.round(files.fdata.size / 1024)}KB)\n[TYPE](${files.fdata.type})\n[IP](${userIP})\n[KEY](${authKey})\n\`\`\`\n${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName}`);
             if (err) return res.write(err);
-            this.log.verbose(`New File Upload: ${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName} | IP: ${userIP} | KEY: ${authKey}`);
+            this.log.verbose(`New File Upload: ${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName} | IP: ${userIP}`);
             if (usingUploader === true) {
                 res.redirect(`/?success=${protocol}://${req.headers.host}/${this.c.dateURLPath === true ? `${getDate('year')}/${getDate('month')}/${getDate('day')}/`: ""}${returnedFileName}`);
                 return res.end();
