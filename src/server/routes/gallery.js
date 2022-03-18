@@ -20,7 +20,7 @@ async function post(req, res) {
         res.end();
         return this.log.warning(`Unauthorized User | Gallery Access | ${userIP} | ${req.body.password}`);
     }
-    this.log.warning(`IP Address: ${userIP} successfully accessed gallery with key ${req.body.password}`);
+    this.log.warning(`IP Address: ${userIP} successfully accessed gallery with key REDACTED`);
     if (this.monitorChannel !== null) this.bot.createMessage(this.monitorChannel, `\`\`\`MARKDOWN\n[GALLERY ACCESS][USER]\n[IP](${userIP})\n[KEY](${req.body.password})\n\`\`\``);
     fs.readdir(`${__dirname}/../uploads`, (err, files) => {
         let pics = [];
